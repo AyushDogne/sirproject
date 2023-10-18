@@ -8,11 +8,14 @@ import { logDOM } from '@testing-library/react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App color="red" clickEvent={()=>
+    <App event={()=>
     {
-console.log("this is the button")
-alert("this is button");
-    }} />
+      
+      alert("hello i am ayush");
+      console.log("ayush dogne here");
+
+    }
+    }/>
   </React.StrictMode>
 );
 

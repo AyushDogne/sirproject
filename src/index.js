@@ -8,7 +8,7 @@ import { logDOM } from '@testing-library/react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App event={()=>
+    <App color="red" event={()=>
     {
       
       alert("hello i am ayush");

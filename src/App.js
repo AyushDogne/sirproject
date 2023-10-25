@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import React from 'react';
+// import React from 'react';
 
 
 //  class App extends React.Component
@@ -58,6 +59,7 @@ import React from 'react';
 // }
 //  export default App
 
+
 // class Ayush
 // {
 //     id 
@@ -108,6 +110,7 @@ import React from 'react';
 //     <div className="App">
     
 //     <button onClick={props.event}> click</button>
+    
 //     </div>
 //   );
 // }
@@ -125,6 +128,7 @@ import React from 'react';
 //     return <button onClick={this.props.event}>click</button>
 //   }
 // }
+
 
 
 // class App extends React.Component
@@ -317,8 +321,116 @@ import React from 'react';
 
 
 
+// const App = () =>
+// {
+//   let [todo, setTodo] = useState([]);
+
+//   function handleClick(event)
+//   {
+//     event.preventDefault()
+//     console.log("-------------------handleClick is clicked-------------------")
+//     let newTodo = document.getElementById("addTodo").value
+//     let newTodoObject = {
+//       id: todo.length,
+//       text: newTodo,
+//       completed: false,
+//     }
+//     //console.log("Text readed: "+newTodo)
+//     // console.log(newTodoObject)
+//     //console.log(todo)
+//     todo.push(newTodoObject)
+//     //setTodo([...todo].concat(newTodoObject))
+//     setTodo([...todo])
+//     console.log(todo)
+//     document.getElementById("addTodo").value = ""
+//   }
+
+//   function deleteTodo(id)
+//   {
+//     //event.preventDefault()
+//     console.log("-------------------Delete button called!-------------------")
+//     console.log(todo)
+//     let udatedTodo = todo.filter((tempTodo)=>  tempTodo.id !== id)
+//     console.log("Update Array: "+udatedTodo)
+//     setTodo(udatedTodo)
+//     console.log(todo)
+//   }
+  
+//   return <div>
+//        <h1>ToDo list</h1>
+//        <form onSubmit={handleClick}>
+//          <input type="text" id='addTodo'/>
+//          <button type='submit'>Add To-do</button>
+//        </form>
+//        <div>
+//           {todo.map((tempTodo) =>
+//             {
+//               return <div id="todoListID">
+//                 <div id="todoTextId">{tempTodo.text}</div>
+//                 <button onClick={()=>deleteTodo(tempTodo.id)}>Delete</button>
+//                 </div>
+//             })
+//           }          
+//       </div>
+//     </div>
+
+//  }
 
 
+
+
+let App=()=>
+{
+  let [todo, settodo]=useState([])
+  
+  function hendaltodo(event)
+  {
+    event.preventDefault()
+    console.log("----------runn--------");
+    let newtodo=document.getElementById("addtodo").value
+    let newtodoobject=
+    {
+      id:todo.length,
+      text:newtodo,
+    }
+    todo.push(newtodoobject)
+    console.log(todo)
+    settodo([...todo])
+    document.getElementById("addtodo").value=""
+  }
+    function deletetodo(id)
+    {
+      console.log("------runn delete---------")
+      let updatetodo=todo.filter((temptodo)=>temptodo.id!==id)
+      settodo(updatetodo)
+      console.log(updatetodo)
+
+    } 
+  
+  return(
+    <div className='mandiv'>
+      <h1 className='ss'>ADD TODO LIST</h1>
+      <form onSubmit={hendaltodo}>
+        <input type="text" placeholder='Enter any list' id='addtodo'/>
+        <input type="submit" id='style' />
+      </form>
+      
+       <div>
+        {todo.map((temptodo)=>
+        {
+          return(
+          <>
+            <div className='ss'>{temptodo.text}</div>
+          <button onClick={()=>deletetodo(temptodo.id)} id='style'>delete</button>
+          </>
+          )
+        })}
+       </div>
+
+
+    </div>
+  )
+}
 
 
 

@@ -1,163 +1,163 @@
 // import { useState } from "react";
 //import { useState } from 'react';
-import { useState } from 'react';
-import './App.css';
+// import { useState } from 'react';
+// import './App.css';
 
-// todo 1--- branch
-const App=()=>
-{
- const [todo,setTodo]=useState([])
- const [editingFlag,setediTing]=useState(-1)
-
-
-function addTodo(evant)
-{
-  console.log("------addTodo-------");
-  let tempTodo=document.getElementById("todoInput").value
-  console.log("tempTodo: "+tempTodo)
-
-if(todo.length>0)
-{
-addToarray(todo[todo.length-1].id+1,tempTodo, false)
-}
-else
-{
-addToarray(0,tempTodo, false)
-}
-}
-function addToarray( id,text,completed)
-{
-
-  let tempTodoObject=
-  {
-    id:id,
-    text:text,
-    completed:completed
-
-  }
-  todo.push(tempTodoObject)
-  console.log(todo)
-  setTodo([...todo])
-  document.getElementById("todoInput").value = ""
-}
-
-function deleteTodo(id)
-{
-  console.log("-----delete function is running-----")
-  let deleteTodo=todo.filter((deleteTodo)=>deleteTodo.id !==id)
-  setTodo([...deleteTodo])
-  console.log(deleteTodo)
-
-}
-
-function mockbutton()
-{
-  if(todo.length>0)
-  {
-  console.log("mock is rum")
- addToarray(todo[todo.length-1].id+1,"todo:1",true)
- addToarray(todo[todo.length-1].id+1,"todo:2",false)
- addToarray(todo[todo.length-1].id+1,"todo:3",false)
- addToarray(todo[todo.length-1].id+1,"todo:4",false)
-}
-else
-{
-  addToarray(0,"todo:1",true)
-  addToarray(todo[todo.length-1].id+1,"todo:2",false)
-  addToarray(todo[todo.length-1].id+1,"todo:3",false)
-  addToarray(todo[todo.length-1].id+1,"todo:4",false)
-
-}
-}
-function checkLitener(id)
-{
-  console.log("-------check-------")
-  todo.map(element=>{ 
-    if(element.id==id)
-    {
-      element.completed=!element.completed
-    }
-    return element
-  })
-  console.log(todo)
-  setTodo([...todo])
-}
-function editTodo(id)
-{
-  console.log("-----edit todo-------")
-  setediTing(id)
-
-}
-
-function upDateTodo()
-{
-  console.log("-----eun upDateTodo------")
-  console.log("editingFlag: "+editingFlag)
-
-  let tempTodo=todo.map(element=>{
-
-      if(element.id==editingFlag)
-      {
-        element.text=document.getElementById("editTodo").value
-      }
-      return element
-  })
-  setediTing(-1)
-  setTodo([...tempTodo])
-}
-
-  return <div>
-    <h1>To-do Application</h1>
-    <button onClick={()=>mockbutton()}>mock</button>
-    <input type="text" placeholder="Enter to-do here" id="todoInput" />
-    <button onClick={()=>addTodo()}>Add to-do</button>
-
-   {
-      todo.map(element =>
-     {
-      return <div>
-      {
-
-        //compeleted todo
-        element.completed ?
-        <div>
-        <input type="checkbox" onChange={()=>checkLitener(element.id)}checked />
-        <s>{element.text+"    "}</s>
+// // todo 1--- branch
+// const App=()=>
+// {
+//  const [todo,setTodo]=useState([])
+//  const [editingFlag,setediTing]=useState(-1)
 
 
-      </div>:
-      //incompeleted todo
-      (element.id == editingFlag ? 
+// function addTodo(evant)
+// {
+//   console.log("------addTodo-------");
+//   let tempTodo=document.getElementById("todoInput").value
+//   console.log("tempTodo: "+tempTodo)
 
-        <div>
-        <input type="checkbox" onClick={()=>checkLitener(element.id)}/>
-        <input type="text" Value={element.text+"    "} placeholder="updating todo" id="editTodo" />
+// if(todo.length>0)
+// {
+// addToarray(todo[todo.length-1].id+1,tempTodo, false)
+// }
+// else
+// {
+// addToarray(0,tempTodo, false)
+// }
+// }
+// function addToarray( id,text,completed)
+// {
 
-      <button onClick={()=>deleteTodo(element.id)}>Delete todo</button>
-      <button onClick={()=>upDateTodo()}>seve to-do</button>
+//   let tempTodoObject=
+//   {
+//     id:id,
+//     text:text,
+//     completed:completed
+
+//   }
+//   todo.push(tempTodoObject)
+//   console.log(todo)
+//   setTodo([...todo])
+//   document.getElementById("todoInput").value = ""
+// }
+
+// function deleteTodo(id)
+// {
+//   console.log("-----delete function is running-----")
+//   let deleteTodo=todo.filter((deleteTodo)=>deleteTodo.id !==id)
+//   setTodo([...deleteTodo])
+//   console.log(deleteTodo)
+
+// }
+
+// function mockbutton()
+// {
+//   if(todo.length>0)
+//   {
+//   console.log("mock is rum")
+//  addToarray(todo[todo.length-1].id+1,"todo:1",true)
+//  addToarray(todo[todo.length-1].id+1,"todo:2",false)
+//  addToarray(todo[todo.length-1].id+1,"todo:3",false)
+//  addToarray(todo[todo.length-1].id+1,"todo:4",false)
+// }
+// else
+// {
+//   addToarray(0,"todo:1",true)
+//   addToarray(todo[todo.length-1].id+1,"todo:2",false)
+//   addToarray(todo[todo.length-1].id+1,"todo:3",false)
+//   addToarray(todo[todo.length-1].id+1,"todo:4",false)
+
+// }
+// }
+// function checkLitener(id)
+// {
+//   console.log("-------check-------")
+//   todo.map(element=>{ 
+//     if(element.id==id)
+//     {
+//       element.completed=!element.completed
+//     }
+//     return element
+//   })
+//   console.log(todo)
+//   setTodo([...todo])
+// }
+// function editTodo(id)
+// {
+//   console.log("-----edit todo-------")
+//   setediTing(id)
+
+// }
+
+// function upDateTodo()
+// {
+//   console.log("-----eun upDateTodo------")
+//   console.log("editingFlag: "+editingFlag)
+
+//   let tempTodo=todo.map(element=>{
+
+//       if(element.id==editingFlag)
+//       {
+//         element.text=document.getElementById("editTodo").value
+//       }
+//       return element
+//   })
+//   setediTing(-1)
+//   setTodo([...tempTodo])
+// }
+
+//   return <div>
+//     <h1>To-do Application</h1>
+//     <button onClick={()=>mockbutton()}>mock</button>
+//     <input type="text" placeholder="Enter to-do here" id="todoInput" />
+//     <button onClick={()=>addTodo()}>Add to-do</button>
+
+//    {
+//       todo.map(element =>
+//      {
+//       return <div>
+//       {
+
+//         //compeleted todo
+//         element.completed ?
+//         <div>
+//         <input type="checkbox" onChange={()=>checkLitener(element.id)}checked />
+//         <s>{element.text+"    "}</s>
 
 
-      </div>:
+//       </div>:
+//       //incompeleted todo
+//       (element.id == editingFlag ? 
 
-      <div>
-        <input type="checkbox" onClick  ={()=>checkLitener(element.id)}/>
-      {element.text+"    "}
-      <button onClick={()=>deleteTodo(element.id)}>Delete todo</button>
-      <button onClick={()=>editTodo(element.id)}>Edit</button>
+//         <div>
+//         <input type="checkbox" onClick={()=>checkLitener(element.id)}/>
+//         <input type="text" Value={element.text+"    "} placeholder="updating todo" id="editTodo" />
 
-      </div>
-      )
-
-
-      }
-      </div>
-    })
-  }
-  </div>
-}
+//       <button onClick={()=>deleteTodo(element.id)}>Delete todo</button>
+//       <button onClick={()=>upDateTodo()}>seve to-do</button>
 
 
-export default App;
+//       </div>:
+
+//       <div>
+//         <input type="checkbox" onClick  ={()=>checkLitener(element.id)}/>
+//       {element.text+"    "}
+//       <button onClick={()=>deleteTodo(element.id)}>Delete todo</button>
+//       <button onClick={()=>editTodo(element.id)}>Edit</button>
+
+//       </div>
+//       )
+
+
+//       }
+//       </div>
+//     })
+//   }
+//   </div>
+// }
+
+
+// export default App;
 
 
 
@@ -172,7 +172,7 @@ export default App;
 //     console.log(newTodo)
 //     Arraytodo(todo.length,newTodo)
 //   }
-  
+
 //   function deleteTodo(id) 
 
 //   {
@@ -180,7 +180,7 @@ export default App;
 //     let delet = todo.filter((element) => element.id != id)
 //     setTodo([...delet])
 //     console.log(delet)
-     
+
 //   }
 
 //   function Arraytodo(id,text)
@@ -204,7 +204,7 @@ export default App;
 //    Arraytodo(todo.length,"todo-1")
 //    Arraytodo (todo.length,"todo-5")
 //   }
-  
+
 //   function editTodo()
 //   {
 
@@ -234,3 +234,61 @@ export default App;
 
 // export default App
 
+
+
+import React from "react"
+
+// chlid component
+class Innercomponent extends React.Component 
+{
+
+  constructor(props)
+   {
+    super(props)
+  }
+  render()
+   {
+    const style={color:this.props.color}
+    return (
+      <div>
+      chiled says:
+      <span style={style}>{this.props.name}</span>
+      </div>
+    )
+  }
+}
+
+
+
+// perent component
+class App extends React.Component 
+{
+  state={color:"black",name:"Ayush"}
+
+   changecolor=()=>
+   {
+    const colorText=document.getElementById("colorText").value
+    this.setState({color:colorText})
+   }
+changename=()=>
+{
+  let namechange=document.getElementById("namechange").value
+  this.setState({name:namechange})
+}
+
+
+  render()
+   {
+    return (
+      <div>
+     
+     Color <input type="text" placeholder="Enter color here" onChange={this.changecolor} id="colorText"/><br/>
+     Name <input type="text" placeholder="Eneter name here" onChange={this.changename} id="namechange" />
+     <Innercomponent color={this.state.color} name={this.state.name}/>
+      </div>
+    )
+
+  }
+}
+
+export default App
